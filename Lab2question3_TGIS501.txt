@@ -1,0 +1,28 @@
+"""# Open GIS_is_the_best.txt file
+doc = open("GIS_is_the_best.txt")""" # Works, but requires same directory and may not work for grading
+
+# Instead: call .txt from GitHub raw file url 
+# *only works with valid token, which I will need to hide before putting on github*
+
+import requests
+url = 'https://raw.githubusercontent.com/UWTMGIS/TGIS501_Files/master/GIS_is_the_best.txt?token=AfM2epGxMEBqSsMq6_bfVibM0guzSzFxks5aZoMvwA%3D%3D'
+page = requests.get(url)
+
+
+# Read file as text string
+text = page.text
+
+# Get rid of all uppercase text (not really needed)
+lowc = text.lower()
+
+# Strip leading spaces on line 1
+strip = lowc.lstrip()
+
+# Split string into list of words
+wordlist = strip.split()
+
+# Count lentght of list
+ct = len(wordlist)
+
+# Print resulting count
+print 'The file contains', ct, 'words.'
